@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <style>
+        body {
+            background-color: blanchedalmond;
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <h1><center>People who filled Driver Application Form</center></h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Download as PDF</th>
+        </tr>
+        <% for(i=0;i<data.length;i++) { %>
+        <tr>
+            <td><%= data[i].name %></td>
+            <td><%= data[i].email%></td>
+            <td>
+                <form action="pdf" method="post">
+                    <input type="hidden" name="username" value=<%=data[i].username%> />
+                    <input type="hidden" name="id" value=<%=data[i].id%> />
+                    <button type="submit">Generate pdf</button></form>
+                <%}%>
+            
+            </td>
+        </tr> 
+</table>
+
+</body>
+
+</html>

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Driver Form</title>
+  <style>
+    form {
+      display: inline-block;
+      align-items: center;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+    }
+
+    body {
+      padding: 1em;
+      font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      background-color: blanchedalmond;
+    }
+
+    h5 {
+      color: #f0a500;
+    }
+
+    input,
+    input[type="radio"]+label,
+    input[type="checkbox"]+label:before,
+    select option,
+    select {
+      width: 100%;
+      padding: 1em;
+      line-height: 1.4;
+      background-color: #f9f9f9;
+      border: 1px solid #e5e5e5;
+      border-radius: 3px;
+      -webkit-transition: 0.35s ease-in-out;
+      -moz-transition: 0.35s ease-in-out;
+      -o-transition: 0.35s ease-in-out;
+      transition: 0.35s ease-in-out;
+      transition: all 0.35s ease-in-out;
+    }
+
+    input:focus {
+      outline: 0;
+      border-color: #bd8200;
+    }
+
+    input:focus+.input-icon i {
+      color: #f0a500;
+    }
+
+    input:focus+.input-icon:after {
+      border-right-color: #f0a500;
+    }
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    input[type="radio"]+label,
+    select {
+      display: inline-block;
+      width: 50%;
+      text-align: center;
+      float: left;
+      border-radius: 0;
+    }
+
+    input[type="radio"]+label:first-of-type {
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+
+    input[type="radio"]+label:last-of-type {
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+
+    input[type="radio"]+label i {
+      padding-right: 0.4em;
+    }
+
+    input[type="radio"]:checked+label,
+    input:checked+label:before,
+    select:focus,
+    select:active {
+      background-color: #f0a500;
+      color: #fff;
+      border-color: #bd8200;
+    }
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    input[type="checkbox"]+label {
+      position: relative;
+      display: block;
+      padding-left: 1.6em;
+    }
+
+    input[type="checkbox"]+label:before {
+      position: absolute;
+      top: 0.2em;
+      left: 0;
+      display: block;
+      width: 1em;
+      height: 1em;
+      padding: 0;
+      content: "";
+    }
+
+    input[type="checkbox"]+label:after {
+      position: absolute;
+      top: 0.45em;
+      left: 0.2em;
+      font-size: 0.8em;
+      color: #fff;
+      opacity: 0;
+      font-family: FontAwesome;
+      content: "\f00c";
+    }
+
+    input:checked+label:after {
+      opacity: 1;
+    }
+
+    select {
+      height: 3.4em;
+      line-height: 2;
+    }
+
+    select:first-of-type {
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+
+    select:last-of-type {
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+
+    select:focus,
+    select:active {
+      outline: 0;
+    }
+
+    select option {
+      background-color: #f0a500;
+      color: #fff;
+    }
+
+    .input-group {
+      margin-bottom: 1em;
+      zoom: 1;
+    }
+
+    .input-group:before,
+    .input-group:after {
+      content: "";
+      display: table;
+    }
+
+    .input-group:after {
+      clear: both;
+    }
+
+    .input-group-icon {
+      position: relative;
+    }
+
+    .input-group-icon input {
+      padding-left: 4.4em;
+    }
+
+    .input-group-icon .input-icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3.4em;
+      height: 3.4em;
+      line-height: 3.4em;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .input-group-icon .input-icon:after {
+      position: absolute;
+      top: 0.6em;
+      bottom: 0.6em;
+      left: 3.4em;
+      display: block;
+      border-right: 1px solid #e5e5e5;
+      content: "";
+      -webkit-transition: 0.35s ease-in-out;
+      -moz-transition: 0.35s ease-in-out;
+      -o-transition: 0.35s ease-in-out;
+      transition: 0.35s ease-in-out;
+      transition: all 0.35s ease-in-out;
+    }
+
+    .input-group-icon .input-icon i {
+      -webkit-transition: 0.35s ease-in-out;
+      -moz-transition: 0.35s ease-in-out;
+      -o-transition: 0.35s ease-in-out;
+      transition: 0.35s ease-in-out;
+      transition: all 0.35s ease-in-out;
+    }
+
+    .container {
+      max-width: 38em;
+      padding: 1em 3em 2em 3em;
+      margin: 0em auto;
+      background-color: #fff;
+      border-radius: 4.2px;
+      box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
+    }
+
+    .row {
+      zoom: 1;
+    }
+
+    .row:before,
+    .row:after {
+      content: "";
+      display: table;
+    }
+
+    .row:after {
+      clear: both;
+    }
+
+    .col-half {
+      padding-right: 10px;
+      float: left;
+      width: 50%;
+    }
+
+    .col-half:last-of-type {
+      padding-right: 0;
+    }
+
+    .col-third {
+      padding-right: 10px;
+      float: left;
+      width: 33.33333333%;
+    }
+
+    .col-third:last-of-type {
+      padding-right: 0;
+    }
+
+
+
+    .text {
+      color: black;
+    }
+
+    h3 {
+      color: black;
+      text-justify: auto;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bolder;
+    }
+
+    label {
+      color: black;
+      text-align: left;
+    }
+
+    textarea {
+      width: 100%;
+      height: 200px;
+    }
+
+    .formbuilder-text-label {
+      align-items: left;
+    }
+  </style>
+</head>
+
+<body>
+  <left><a href="/"><button class="w3-btn w3-orange w3-xlarge">Home<i class="w3-margin-left fa fa-home"></i></button></a></left>
+  <center>
+    <form style="width: 600px;align-self: center;" method="post" action="form1">
+      <div class="rendered-form">
+        <div class="text">
+          <h3 access="false" id="control-842990">APPLICATION INFORMATION</h3>
+        </div>
+        <div class="formbuilder-text form-group field-name">
+          <label for="name" class="formbuilder-text-label">NAME<span class="formbuilder-required">*</span></label>
+          <input type="text" placeholder="" class="form-control" name="name" access="false" id="name"
+            required="required" aria-required="true">
+        </div>
+        <div class="formbuilder-text form-group field-phone">
+          <label for="phone" class="formbuilder-text-label">PHONE<span class="formbuilder-required">*</span></label>
+          <input type="tel" class="form-control" name="phone" access="false" id="phone" required="required"
+            aria-required="true">
+        </div>
+        <div class="formbuilder-text form-group field-email">
+          <label for="email" class="formbuilder-text-label">EMAIL<span class="formbuilder-required">*</span></label>
+          <input type="email" class="form-control" name="email" access="false" id="email" required="required"
+            aria-required="true">
+        </div>
+        <div class="formbuilder-date form-group field-dob">
+          <label for="dob" class="formbuilder-date-label">DATE OF BIRTH<span
+              class="formbuilder-required">*</span></label>
+          <input type="date" class="form-control" name="dob" access="false" id="dob" required="required"
+            aria-required="true">
+        </div>
+        <div class="formbuilder-text form-group field-social_security">
+          <label for="social_security" class="formbuilder-text-label">SOCIAL SECURITY #<span
+              class="formbuilder-required">*</span></label>
+          <input type="text" class="form-control" name="social_security" access="false" id="social_security"
+            required="required" aria-required="true">
+        </div>
+        <div class="formbuilder-date form-group field-doa">
+          <label for="doa" class="formbuilder-date-label">DATE OF APPLICATION<span
+              class="formbuilder-required">*</span></label>
+          <input type="date" class="form-control" name="doa" access="false" id="doa" required="required"
+            aria-required="true">
+        </div>
+        <div class="formbuilder-text form-group field-position">
+          <label for="position" class="formbuilder-text-label">POSITION APPLIED FOR<span
+              class="formbuilder-required">*</span></label>
+          <input type="text" class="form-control" name="position" access="false" id="position" required="required"
+            aria-required="true">
+        </div>
+        <div class="formbuilder-date form-group field-daw">
+          <label for="daw" class="formbuilder-date-label">DATE AVAILABLE FOR WORK<span
+              class="formbuilder-required">*</span></label>
+          <input type="date" class="form-control" name="daw" access="false" id="daw" required="required"
+            aria-required="true">
+        </div>
+        <div class="formbuilder-select form-group field-rights">
+          <label for="rights" class="formbuilder-select-label">DO YOU HAVE LEGAL RIGHT TO WORK IN UNITED STATES?<span
+              class="formbuilder-required">*</span></label>
+          <select class="form-control" name="rights" id="rights" required="required" aria-required="true">
+            <option value="YES" selected="true" id="rights-0">YES</option>
+            <option value="NO" id="rights-1">NO</option>
+          </select>
+        </div>
+        <br>
+        <br>
+        <div class="">
+          <h3 access="false" id="control-6207585">PREVIOUS THREE YEARS RESIDENCY</h3>
+        </div>
+        <div class="formbuilder-textarea form-group field-current_address">
+          <label for="current_address" class="formbuilder-textarea-label">CURRENT ADDRESS<span
+              class="formbuilder-required">*</span></label>
+          <textarea type="textarea" placeholder="Include Street,City,State,Zip Code " class="form-control"
+            name="current_address" access="false" id="current_address" required="required"
+            aria-required="true"></textarea>
+        </div>
+        <div class="formbuilder-textarea form-group field-mailing_address">
+          <label for="mailing_address" class="formbuilder-textarea-label">MAILING ADDRESS</label>
+          <textarea type="textarea" placeholder="Include Street,City,State and Zip Code" class="form-control"
+            name="mailing_address" access="false" id="mailing_address"></textarea>
+        </div>
+        <div class="formbuilder-textarea form-group field-previous_address">
+          <label for="previous_address" class="formbuilder-textarea-label">PREVIOUS ADDRESS</label>
+          <textarea type="textarea"
+            placeholder="IF ANY(IN CASE OF MULTIPLE PREVIOUS ADDRESS, ADD THEM IN THIS TEXT AREA ONE BY ONE)"
+            class="form-control" name="previous_address" access="false" id="previous_address"></textarea>
+        </div>
+        <div class="">
+          <h3 access="false" id="control-5276549">License Information</h3>
+        </div>
+        <div class="">
+          <h5 access="false" id="control-4787111">No person who operates a commercial motor vehicle shall at any time
+            have more than one driver’s license (49 CFR 383.21). I certify that I do not have more than one motor
+            vehicle license, the information for which is listed below. Include all licenses held for the past 3 years;
+            attach additional sheets if needed.</h5>
+        </div>
+        <div class="formbuilder-text form-group field-state">
+          <label for="state" class="formbuilder-text-label">STATE<span class="formbuilder-required">*</span></label>
+          <input type="text" class="form-control" name="state" access="false" id="state" required="required"
+            aria-required="true">
+        </div>
+        <div class="formbuilder-text form-group field-license_no">
+          <label for="license_no" class="formbuilder-text-label">LICENSE #<span
+              class="formbuilder-required">*</span></label>
+          <input type="text" class="form-control" name="license_no" access="false" id="license_no" required="required"
+            aria-required="true">
+        </div>
+        <div class="formbuilder-text form-group field-type">
+          <label for="type" class="formbuilder-text-label">TYPE/CLASS<span class="formbuilder-required">*</span></label>
+          <input type="text" class="form-control" name="type" access="false" id="type" required="required"
+            aria-required="true">
+        </div>
+        <div class="formbuilder-text form-group field-endorsements">
+          <label for="endorsements" class="formbuilder-text-label">ENDORSEMENTS<span
+              class="formbuilder-required">*</span></label>
+          <input type="text" class="form-control" name="endorsements" access="false" id="endorsements"
+            required="required" aria-required="true">
+        </div>
+        <div class="formbuilder-date form-group field-date-1639198996685">
+          <label for="date-1639198996685" class="formbuilder-date-label">EXPIRATION DATE<span
+              class="formbuilder-required">*</span></label>
+          <input type="date" class="form-control" name="expiry_date" access="false" id="date-1639198996685"
+            required="required" aria-required="true">
+        </div>
+        <div class="">
+          <h3 access="false" id="control-5078787">DRIVING EXPERIENCE</h3>
+        </div>
+      </div>
+      <div class="">
+        <h5 access="false" id="control-5012618">In case of multiple values, fill in the values separated by commas for
+          each field</h5>
+      </div>
+      <div class="formbuilder-text form-group field-coe">
+        <label for="coe" class="formbuilder-text-label">Class of equipment</label>
+        <input type="text" class="form-control" name="coe" access="false" id="coe">
+      </div>
+      <div class="formbuilder-text form-group field-toe">
+        <label for="toe" class="formbuilder-text-label">Type of equipment</label>
+        <input type="text" class="form-control" name="toe" access="false" id="toe">
+      </div>
+      <div class="formbuilder-date form-group field-date_from">
+        <label for="date_from" class="formbuilder-date-label">Date from</label>
+        <input type="date" class="form-control" name="date_from" access="false" id="date_from">
+      </div>
+      <div class="formbuilder-date form-group field-date_to">
+        <label for="date_to" class="formbuilder-date-label">Date to</label>
+        <input type="date" class="form-control" name="date_to" access="false" id="date_to">
+      </div>
+      <div class="formbuilder-text form-group field-miles">
+        <label for="miles" class="formbuilder-text-label">Approx Miles</label>
+        <input type="text" class="form-control" name="miles" access="false" id="miles">
+      </div>
+      <div class="">
+        <h3 access="false" id="control-7986559">ACCIDENT RECORD FOR THE PAST 3 YEARS</h3>
+      </div>
+      <div class="formbuilder-text form-group field-accident_date">
+        <label for="accident_date" class="formbuilder-text-label">DATES (Most recent first)</label>
+        <input type="text" class="form-control" name="accident_date" access="false" id="accident_date">
+      </div>
+      <div class="formbuilder-text form-group field-noa">
+        <label for="noa" class="formbuilder-text-label">NATURE OF ACCIDENT</label>
+        <input type="text" placeholder="(Head-on, rear-end, upset, etc.)" class="form-control" name="noa" access="false"
+          id="noa">
+      </div>
+      <div class="formbuilder-text form-group field-fatalities">
+        <label for="fatalities" class="formbuilder-text-label">#FATALITIES</label>
+        <input type="text" class="form-control" name="fatalities" access="false" id="fatalities">
+      </div>
+      <div class="formbuilder-text form-group field-injuries">
+        <label for="injuries" class="formbuilder-text-label">#INJURIES</label>
+        <input type="text" class="form-control" name="injuries" access="false" id="injuries">
+      </div>
+      <div class="formbuilder-text form-group field-chemical_spills">
+        <label for="chemical_spills" class="formbuilder-text-label">CHEMICAL SPILLS</label>
+        <input type="text" placeholder="YES/NO" class="form-control" name="chemical_spills" access="false"
+          id="chemical_spills">
+      </div>
+
+      <div class="">
+        <h3 access="false" id="control-5968397">TRAFFIC CONVICTIONS AND FORFEITURES FOR THE PAST 3 YEARS (OTHER THAN
+          PARKING VIOLATIONS)</h3>
+      </div>
+      <div class="formbuilder-text form-group field-date_convicted">
+        <label for="date_convicted" class="formbuilder-text-label">DATE CONVICTED</label>
+        <input type="text" class="form-control" name="date_convicted" access="false" id="date_convicted">
+      </div>
+      <div class="formbuilder-text form-group field-violation">
+        <label for="violation" class="formbuilder-text-label">VIOLATION</label>
+        <input type="text" class="form-control" name="violation" access="false" id="violation">
+      </div>
+      <div class="formbuilder-text form-group field-text-1639295320597">
+        <label for="text-1639295320597" class="formbuilder-text-label">STATE OF VIOLATION</label>
+        <input type="text" class="form-control" name="state_violation" access="false" id="text-1639295320597">
+      </div>
+      <div class="formbuilder-text form-group field-text-1639295346397">
+        <label for="text-1639295346397" class="formbuilder-text-label">PENALTY</label>
+        <input type="text" placeholder="(Forfeited bond, collateral and/or points)" class="form-control" name="penalty"
+          access="false" id="text-1639295346397">
+      </div>
+      <div class="formbuilder-select form-group field-select-1639295371251">
+        <label for="select-1639295371251" class="formbuilder-select-label">HAVE YOU EVER BEEN DENIED A LICENSE, PERMIT,
+          OR PRIVILEGE TO OPERATE A MOTOR VEHICLE?</label><br><br>
+        <select class="form-control" name="denied_license" id="select-1639295371251">
+          <option value="YES" selected="true" id="select-1639295371251-0">YES</option>
+          <option value="NO" id="select-1639295371251-1">NO</option>
+        </select>
+        <br>
+      </div>
+      <div class="formbuilder-text form-group field-explaination1">
+        <label for="explaination1" class="formbuilder-text-label">IF YES, EXPLAIN</label><br><br>
+        <input type="text" class="form-control" name="explaination1" access="false" id="explaination1">
+      </div><br>
+      <div class="formbuilder-select form-group field-select-1639295514357">
+        <label for="select-1639295514357" class="formbuilder-select-label">HAS ANY LICENSE, PERMIT, OR PRIVILEGE EVER
+          BEEN SUSPENDED OR REVOKED?</label><br>
+        <br>
+        <select class="form-control" name="suspended" id="select-1639295514357">
+          <option value="YES" selected="true" id="select-1639295514357-0">YES</option>
+          <option value="NO" id="select-1639295514357-1">NO</option>
+        </select>
+      </div>
+      <br>
+      <div class="formbuilder-textarea form-group field-explain2"><br>
+        <label for="explain2" class="formbuilder-textarea-label">IF YES, EXPLAIN</label><br>
+        <br>
+        <input type="text" class="form-control" name="explaination2" access="false" id="explaination2">
+      </div>
+      <br>
+
+      <input type="file" name="file" />
+
+
+
+
+      <br><br>
+      <button type="submit" class="btn-success btn">Submit</button>
+
+    </form>
+  </center>
+
+</body>
+
+</html>
