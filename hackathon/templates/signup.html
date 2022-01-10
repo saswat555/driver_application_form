@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="../static/form.css">
+</head>
+<div class="form">
+    <div class="form-toggle"></div>
+    <div class="form-panel one">
+      <div class="form-header">
+        <h1>Account Signup</h1>
+      </div>
+      <div class="form-content">
+        <form action="{{ url_for('signup') }}" method="post">
+          <div class="form-group">
+            <label for="username">Email</label>
+            <input type="text" id="email" name="email" required="required"/>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required="required"/>
+          </div>
+          <div class="form-group">
+            <label for="username">USN</label>
+            <input type="text" id="USN" name="USN" required="required"/>
+          </div>
+          <div class="form-group">
+            <label for="username">Phone Number</label>
+            <input type="text" id="phone" name="phone" required="required"/>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-remember">
+              <h2>{{ msg }}</h2>
+
+          </div>
+          <div class="form-group">
+            <button type="submit">Sign Up</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
